@@ -1,6 +1,6 @@
+import json
 from urllib2 import urlopen
 from models import NewsItem
-import json
 
 class HackerNewsAPIImpl:
 	def __init__(self):

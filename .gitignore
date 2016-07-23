@@ -1,1 +1,6 @@
 *.pyc 
+*.swp
+tags
+tag
+*.swo
+celerybeat_schedule
