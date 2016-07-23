@@ -14,11 +14,3 @@ APP = Celery('notify')
 # pickle the object when using Windows.
 APP.config_from_object('django.conf:settings')
 APP.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
-
-
-@APP.task(bind=True)
-def debug_task(self):
-    '''
-    debug task
-    '''
-    print 'Request: {0!r}'.format(self.request)

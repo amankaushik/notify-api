@@ -140,6 +140,31 @@ CELERY_TIMEZONE = 'Asia/Calcutta'
 CELERYBEAT_SCHEDULE = {
         'update_db_every_30_mins': {
             'task': 'update_db',
-            'schedule': crontab(minute='*/1')
+            'schedule': crontab(minute='*/5')
             }
         }
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'vb': {
+            'format':"%(levelname)s %(asctime)s %(name)s.%(funcName)s:%(lineno)s- %(message)s"
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/chanakya/Projects/notify-api/notifyProject/notify.log',
+            'formatter': 'vb'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    }
+}
