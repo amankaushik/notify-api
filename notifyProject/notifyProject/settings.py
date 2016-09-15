@@ -138,11 +138,11 @@ CELERY_RESULT_BACKEND = 'cache+memcached://127.0.0.1:11211/'
 #CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Calcutta'
 CELERYBEAT_SCHEDULE = {
-        'update_db_every_30_mins': {
-            'task': 'update_db',
-            'schedule': crontab(minute='*/5')
-            }
+    'update_db_every_30_mins': {
+        'task': 'update_db',
+        'schedule': crontab(minute='*/5')
         }
+    }
 
 LOGGING = {
     'version': 1,
@@ -156,7 +156,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/home/chanakya/Projects/notify-api/notifyProject/notify.log',
+            'filename': '/tmp/notify.log',
             'formatter': 'vb'
         },
     },

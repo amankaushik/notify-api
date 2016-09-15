@@ -7,4 +7,4 @@ def schedule_update_db():
     '''
     update api db
     '''
-    update_db.delay()
+    update_db()
