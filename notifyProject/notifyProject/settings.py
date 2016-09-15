@@ -25,7 +25,7 @@ SECRET_KEY = 'x^394ngp3_en3&=(sdknj(y(9d60ha-jo3xymz*v_uu^5m^vhs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -56,10 +56,10 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'notifyProject.urls'
-CORS_URLS_REGEX = r'^/api/.*$'
+# CORS_URLS_REGEX = r'^/api/.*$'
 #CORS_ORIGIN_ALLOW_ALL = False
 #CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = ('localhost:3000')
+# CORS_ORIGIN_WHITELIST = ('localhost:3000')
 
 TEMPLATES = [
     {
@@ -133,10 +133,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'cache+memcached://127.0.0.1:11211/'
+# CELERY_RESULT_BACKEND = 'cache+memcached://127.0.0.1:11211/'
 #CELERY_ACCEPT_CONTENT = '[pickle]'
 #CELERY_TASK_SERIALIZER = 'json'
 #CELERY_RESULT_SERIALIZER = 'json'
+CELERY_IGNORE_RESULT = True
 CELERY_TIMEZONE = 'Asia/Calcutta'
 CELERYBEAT_SCHEDULE = {
     'update_db_every_30_mins': {
