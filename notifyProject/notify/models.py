@@ -8,5 +8,5 @@ class NewsItem(models.Model):
     itemTitle = models.TextField(db_column='itemtitle')
     isNew = models.BooleanField(db_column='isnew')
     class Meta:
-        managed = False
+        managed = True 
         db_table = 'news_item'
