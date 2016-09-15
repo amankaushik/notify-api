@@ -1,14 +1,14 @@
-from django.views.decorators.csrf import csrf_exempt
-from notify.models import NewsItem
-from serializer import NewsItemSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status, generics, permissions
-from implementation import HackerNewsAPIImpl
-from django.http import HttpResponse
-import json
-import utils
+'''
+Views
+'''
 
+import json
+import notify.utils as utils
+from notify.models import NewsItem
+from notify.serializer import NewsItemSerializer
+from notify.implementation import HackerNewsAPIImpl
+from rest_framework import generics
+from django.http import HttpResponse
 
 class NewsList(generics.ListCreateAPIView):
     HackerNewsAPIImpl()
@@ -27,5 +27,5 @@ class NewsTop(generics.ListCreateAPIView):
 
 def refreshNewsData(request):
     if request.method == 'GET':
-        utils.refreshNewsData()
+        utils.refresh_news_data()
         return HttpResponse(json.dumps({'result': 'success'}), content_type='application/json')

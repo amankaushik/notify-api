@@ -2,10 +2,10 @@
 Utils module
 '''
 import json
-from notify.implementation import HackerNewsAPIImpl
-import ConfigParser
-from notify.models import  NewsItem
 import logging
+import ConfigParser
+from notify.implementation import HackerNewsAPIImpl
+from notify.models import  NewsItem
 
 logger = logging.getLogger(__name__)
 
