@@ -84,12 +84,6 @@ WSGI_APPLICATION = 'notifyProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'notifydb',
-        'USER': 'gold-nn',
-        'PASSWORD': 'PUCK_nugget',
-    }
 }
 DATABASES['default'] = dj_database_url.config()
 # Password validation
@@ -130,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BROKER_URL = 'redis://localhost:6379'
+BROKER_URL = os.environ['REDIS_URL']#'redis://localhost:6379'
 # CELERY_RESULT_BACKEND = 'cache+memcached://127.0.0.1:11211/'
 #CELERY_ACCEPT_CONTENT = '[pickle]'
 #CELERY_TASK_SERIALIZER = 'json'
