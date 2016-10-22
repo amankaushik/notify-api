@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
+import ast
 import os
 import dj_database_url
 from celery.schedules import crontab
@@ -24,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'x^394ngp3_en3&=(sdknj(y(9d60ha-jo3xymz*v_uu^5m^vhs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ast.literal_eval(os.environ['DEBUG'])
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,8 +58,8 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'notifyProject.urls'
-# CORS_URLS_REGEX = r'^/api/.*$'
-#CORS_ORIGIN_ALLOW_ALL = False
+CORS_URLS_REGEX = r'^/api/.*$'
+CORS_ORIGIN_ALLOW_ALL = True
 #CORS_ALLOW_CREDENTIALS = True
 # CORS_ORIGIN_WHITELIST = ('localhost:3000')
 
@@ -134,7 +135,7 @@ CELERY_TIMEZONE = 'Asia/Calcutta'
 CELERYBEAT_SCHEDULE = {
     'update_db_every_30_mins': {
         'task': 'update_db',
-        'schedule': crontab(minute='*/5')
+        'schedule': crontab(minute='*/30')
         }
     }
 
