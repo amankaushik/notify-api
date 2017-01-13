@@ -28,10 +28,10 @@ def refresh_news_data():
     config_parser = ConfigParser.ConfigParser()
     config_parser.read('notify/config.ini')
     hn_config = dict(config_parser.items('hackernews'))
-    limit = int(hn_config['limit']) 
-    story_base_url = hn_config['storybaseurl'] 
-    response_format = hn_config['format'] 
-    top_stories_base_url = hn_config['topstoriesbaseurl'] 
+    limit = int(hn_config['limit'])
+    story_base_url = hn_config['storybaseurl']
+    response_format = hn_config['format']
+    top_stories_base_url = hn_config['topstoriesbaseurl']
     new_ids = set(hacker_news_api_impl.getStoryIDs(top_stories_base_url,
                                                    response_format, limit))
     old_ids = set(NewsItem.objects.all().values_list('itemId', flat=True))
