@@ -13,4 +13,5 @@ class NewsItemSerializer(serializers.ModelSerializer):
         Meta class for NewsItemSerializer
         '''
         model = NewsItem
-        fields = ('itemId', 'itemUrl', 'itemTitle')
+        fields = ('itemId', 'itemUrl', 'itemTitle',\
+                'itemScore', 'itemTime')

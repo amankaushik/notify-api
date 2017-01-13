@@ -1,6 +1,7 @@
 import json
 from urllib2 import urlopen
 from models import NewsItem
+import datetime as dt
 
 class HackerNewsAPIImpl:
 	def __init__(self):
@@ -33,6 +34,10 @@ class HackerNewsAPIImpl:
 				hackerNewsItemList.append(NewsItem(itemId=storyData['id'],
 				                                   itemUrl=storyData['url'],
 				                                   itemTitle=storyData['title'],
+                                                   itemScore=storyData['score'],
+                                                   itemTime=((dt.datetime.today()-\
+                                                           dt.datetime.fromtimestamp(storyData['time'])\
+                                                       ).seconds / 3600),
 												   isNew=True))
 				print('Story ' + str(count) + ' retrived.')
 				count += 1
